@@ -1,0 +1,390 @@
+/* ==========================================================
+   이병호 자기소개 — style.css
+   디자인 토큰: gs-retail.md (우리동네GS design.md)
+   - primary-dark   #1E2530  (텍스트 · 1차 버튼)
+   - signature-cyan #00D4EA  (브랜드 포인트)
+   - neutral-50     #F4F5FB  (페이지 배경)
+   - 카드 라운딩 18px, 폰트 Pretendard
+   ========================================================== */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+:root {
+  /* Core colors */
+  --primary-dark: #1E2530;
+  --signature-cyan: #00D4EA;
+  --neutral-50: #F4F5FB;
+  --white: #FFFFFF;
+
+  /* 보조 무채색 (design.md neutral ramp) */
+  --neutral-200: #D6D9E1;
+  --neutral-600: #515160;
+  --navy-deep: #001C43;   /* 1차 버튼 눌림 */
+
+  /* 역할별 토큰 */
+  --bg: var(--neutral-50);
+  --surface: var(--white);
+  --text: var(--primary-dark);
+  --muted: var(--neutral-600);
+  --line: var(--neutral-200);
+  --accent: var(--signature-cyan);
+  --accent-soft: rgba(0, 212, 234, 0.12);
+
+  /* Shape & spacing */
+  --radius: 18px;
+  --gutter: 16px;           /* screen-horizontal */
+  --gap: 1rem;
+  --radius-pill: 999px;     /* 액션·아이콘·상태 표시는 원/필 */
+  /* design.md: 발행된 elevation 없음 → 그림자 대신 '면 분리'로 깊이 표현 */
+  --shadow: none;
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system,
+               "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+img { display: block; max-width: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+/* ==========================================================
+   1. 기본(모바일, 768px 미만) — 단일 열 카드 스택
+   ========================================================== */
+.container {
+  width: 100%;
+  padding: 2rem var(--gutter) 3rem;   /* 좌우 16px */
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.sidebar,
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-width: 0;   /* grid/flex 자식 넘침 방지 */
+}
+
+/* ---------- 공통 카드 ---------- */
+.card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.375rem;
+  box-shadow: var(--shadow);
+}
+
+.card-title {               /* design.md section-header: 18px / 700 */
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.875rem;
+}
+
+/* ---------- 프로필 메인 카드 ---------- */
+.profile-card {
+  text-align: center;
+  padding-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.profile-card::before {      /* 청록 브랜드면 */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5.5rem;
+  background: var(--accent);
+}
+
+.avatar {
+  position: relative;
+  width: 40%;
+  max-width: 8rem;
+  aspect-ratio: 1;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--surface);
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar .initial { font-size: 3rem; font-weight: 800; color: var(--text); }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--accent-soft);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+.profile-name {
+  font-size: clamp(1.75rem, 6vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.profile-slogan {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ---------- 액션 버튼 ---------- */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.btn {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.btn-primary {              /* design.md: primary-dark 배경 + 흰 전경 */
+  background: var(--primary-dark);
+  color: var(--white);
+  border: 1px solid var(--primary-dark);
+}
+.btn-primary:hover { background: #2B3442; }
+.btn-primary:active { background: var(--navy-deep); }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-secondary:hover { border-color: var(--accent); }
+
+.btn[aria-disabled="true"] {  /* design.md: 비활성 배경 neutral-300 */
+  background: #C0C4CD;
+  border-color: #C0C4CD;
+  color: var(--white);
+  pointer-events: none;
+}
+
+.btn:focus-visible {        /* design.md: 청록은 포커스 테두리 */
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- 기본 정보 카드 ---------- */
+.info-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: var(--bg);
+  border-radius: calc(var(--radius) - 6px);
+}
+.info-item .icon {          /* design.md: 청록은 원형 아이콘 같은 브랜드 표면에 */
+  flex: 0 0 auto;
+  width: 2.5rem;            /* icon-hit-area 40px */
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.info-item dt { font-size: 0.8125rem; color: var(--muted); }
+.info-item dd { font-size: 1.0625rem; font-weight: 700; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.tag {
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.125rem 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* ---------- 최근 읽은 책 카드 ---------- */
+.book {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.book-cover {
+  flex: 0 0 28%;
+  max-width: 6rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.book-label { font-size: 0.8125rem; color: var(--muted); }
+.book-title { font-size: 1.25rem; font-weight: 700; }
+
+/* ---------- 특이사항 갤러리 ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: calc(var(--radius) - 6px);
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+/* 사진 칸: 이미지를 꽉 채우고 캡션은 하단에 겹침 */
+.gallery-item.is-photo {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background: var(--white);
+}
+.gallery-item.is-photo figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.5rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--white);
+  background: linear-gradient(transparent, rgba(30, 37, 48, 0.75));
+}
+.gallery-item .emoji { font-size: 2rem; line-height: 1; }
+.gallery-item p { font-size: 0.875rem; font-weight: 600; }
+
+/* ---------- 탭 메뉴 ---------- */
+.tabs {
+  display: flex;
+  gap: 0.375rem;
+  padding: 0.375rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+.tab {
+  flex: 1 1 0;
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.tab:hover { color: var(--text); background: var(--accent-soft); }
+.tab[aria-selected="true"] { background: var(--primary-dark); color: var(--white); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.tab-panel[hidden] { display: none; }
+
+/* ---------- 나의 취미 카드 ---------- */
+.hobby-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.125rem;
+}
+.hobby-icon {
+  flex: 0 0 auto;
+  width: 3.5rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.hobby-card .card-title { margin-bottom: 0.375rem; }
+.hobby-desc { color: var(--muted); margin-bottom: 0.75rem; }
+
+.footer {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  padding: 0 var(--gutter) 2rem;
+}
+
+/* ==========================================================
+   2. 데스크톱 (768px 이상) — 2열 레이아웃
+   좌: 프로필 + 액션 (sticky 사이드바)
+   우: 기본 정보 · 최근 읽은 책 · 특이사항 갤러리
+   ========================================================== */
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  .info-list {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  }
+
+  .card { padding: 1.75rem; }
+  .profile-card { padding-top: 2.5rem; }
+}
+
+/* 접근성: 모션 최소화 */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

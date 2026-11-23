@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="반려동물, 취미 생활, 여행 아이디어를 모아 둔 이병호의 아이디어 노트">
+  <title>아이디어 노트 | 이병호</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- 좌측: 노트 프로필 + 액션 -->
+    <aside class="sidebar">
+      <section class="card profile-card">
+        <div class="avatar" aria-hidden="true"><span class="initial">💡</span></div>
+        <span class="eyebrow">오늘의 영감 ✍️</span>
+        <h1 class="profile-name">아이디어 노트</h1>
+        <p class="profile-slogan">떠오른 생각은 작게라도 적어 두면 언젠가 쓸모가 생깁니다.</p>
+
+        <dl class="stats">
+          <div><dt>전체</dt><dd>5</dd></div>
+          <div><dt>진행 중</dt><dd>2</dd></div>
+          <div><dt>카테고리</dt><dd>3</dd></div>
+        </dl>
+      </section>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#">새 아이디어</a>
+        <a class="btn btn-secondary" href="#">공유하기</a>
+      </div>
+    </aside>
+
+    <!-- 우측: 메인 컨텐츠 -->
+    <div class="content">
+      <div class="tabs" role="tablist" aria-label="노트 메뉴">
+        <button class="tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">💡 한눈에 보기</button>
+        <button class="tab" role="tab" id="tab-notes" aria-controls="panel-notes" aria-selected="false" tabindex="-1">📝 상세 노트</button>
+      </div>
+
+      <!-- 탭 1: 한눈에 보기 -->
+      <div class="tab-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+        <section class="card" aria-labelledby="summary">
+          <h2 class="card-title" id="summary">노트 요약</h2>
+          <dl class="info-list">
+            <div class="info-item">
+              <span class="icon">🗂️</span>
+              <div>
+                <dt>카테고리</dt>
+                <dd class="tags"><span class="tag">반려동물</span><span class="tag">취미 생활</span><span class="tag">여행</span></dd>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="icon">🚀</span>
+              <div><dt>가장 기대되는 아이디어</dt><dd>동네 펫시터 품앗이</dd></div>
+            </div>
+            <div class="info-item">
+              <span class="icon">🗓️</span>
+              <div><dt>마지막 업데이트</dt><dd><time datetime="2026-11-21">2026년 11월 21일</time></dd></div>
+            </div>
+          </dl>
+        </section>
+
+        <section class="card" aria-labelledby="pick">
+          <h2 class="card-title" id="pick">이번 주 집중 아이디어</h2>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">🐾</span>
+            <div>
+              <p class="feature-label">반려동물 · 진행 중</p>
+              <p class="feature-title">동네 펫시터 품앗이</p>
+              <p class="feature-desc">이웃 3가족과 시범 운영 일정을 잡는 중이에요.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="card" aria-labelledby="all">
+          <h2 class="card-title" id="all">아이디어 모아보기</h2>
+          <div class="gallery">
+            <a class="gallery-item" href="#idea-walk"><span class="emoji">🐶</span><p>산책 기록 지도</p></a>
+            <a class="gallery-item" href="#idea-sitter"><span class="emoji">🐾</span><p>동네 펫시터 품앗이</p></a>
+            <a class="gallery-item" href="#idea-challenge"><span class="emoji">🎨</span><p>취미 맛보기 30일 챌린지</p></a>
+            <a class="gallery-item" href="#idea-musical"><span class="emoji">🎭</span><p>뮤지컬 관람 기록장</p></a>
+            <a class="gallery-item" href="#idea-sushi"><span class="emoji">🍣</span><p>초밥 따라 소도시 여행</p></a>
+          </div>
+        </section>
+      </div>
+
+      <!-- 탭 2: 상세 노트 -->
+      <div class="tab-panel" role="tabpanel" id="panel-notes" aria-labelledby="tab-notes" hidden>
+        <div class="filters" role="group" aria-label="카테고리 필터">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">전체</button>
+          <button class="chip" type="button" data-filter="pet" aria-pressed="false">🐶 반려동물</button>
+          <button class="chip" type="button" data-filter="hobby" aria-pressed="false">🎨 취미 생활</button>
+          <button class="chip" type="button" data-filter="travel" aria-pressed="false">✈️ 여행</button>
+        </div>
+
+        <section class="card idea-card" id="idea-walk" data-category="pet" aria-labelledby="t-walk">
+          <span class="idea-icon">🐶</span>
+          <div>
+            <div class="idea-head">
+              <h2 class="card-title" id="t-walk">산책 기록 지도</h2>
+              <span class="status">구상 중</span>
+            </div>
+            <p class="idea-desc">강아지와 걸은 산책 경로를 지도에 자동으로 남기고, 그날 만난 강아지 친구와 냄새 맡기 좋아한 장소를 메모하는 앱입니다. 한 달이 지나면 우리 동네 ‘최애 산책 코스’를 정리해 줘요.</p>
+            <div class="tags"><span class="tag">반려동물</span><span class="tag">앱</span><span class="tag">위치 기록</span></div>
+          </div>
+        </section>
+
+        <section class="card idea-card" id="idea-sitter" data-category="pet" aria-labelledby="t-sitter">
+          <span class="idea-icon">🐾</span>
+          <div>
+            <div class="idea-head">
+              <h2 class="card-title" id="t-sitter">동네 펫시터 품앗이</h2>
+              <span class="status is-active">진행 중</span>
+            </div>
+            <p class="idea-desc">여행이나 출장으로 집을 비울 때 같은 동네 반려인끼리 서로의 반려동물을 돌봐 주는 모임입니다. 돌봄 시간을 포인트로 쌓아 다음에 내가 맡길 때 쓰는 방식이에요.</p>
+            <div class="tags"><span class="tag">반려동물</span><span class="tag">커뮤니티</span><span class="tag">시범 운영</span></div>
+          </div>
+        </section>
+
+        <section class="card idea-card" id="idea-challenge" data-category="hobby" aria-labelledby="t-challenge">
+          <span class="idea-icon">🎨</span>
+          <div>
+            <div class="idea-head">
+              <h2 class="card-title" id="t-challenge">취미 맛보기 30일 챌린지</h2>
+              <span class="status is-active">진행 중</span>
+            </div>
+            <p class="idea-desc">하루 15분씩 매일 다른 취미를 체험해 보는 챌린지입니다. 드로잉, 우쿨렐레, 홈베이킹처럼 준비물이 적은 것부터 시작해서 나에게 맞는 취미를 찾아봐요.</p>
+            <div class="tags"><span class="tag">취미 생활</span><span class="tag">습관</span><span class="tag">15분</span></div>
+          </div>
+        </section>
+
+        <section class="card idea-card" id="idea-musical" data-category="hobby" aria-labelledby="t-musical">
+          <span class="idea-icon">🎭</span>
+          <div>
+            <div class="idea-head">
+              <h2 class="card-title" id="t-musical">뮤지컬 관람 기록장</h2>
+              <span class="status">구상 중</span>
+            </div>
+            <p class="idea-desc">관람한 작품, 그날의 캐스트, 좌석 시야, 가장 좋았던 넘버를 한 장에 기록하는 노트입니다. 쌓인 기록으로 ‘다음에 앉을 좌석’과 ‘또 보고 싶은 배우’를 추천받을 수 있어요.</p>
+            <div class="tags"><span class="tag">취미 생활</span><span class="tag">공연</span><span class="tag">기록</span></div>
+          </div>
+        </section>
+
+        <section class="card idea-card" id="idea-sushi" data-category="travel" aria-labelledby="t-sushi">
+          <span class="idea-icon">🍣</span>
+          <div>
+            <div class="idea-head">
+              <h2 class="card-title" id="t-sushi">초밥 따라 소도시 여행</h2>
+              <span class="status is-done">계획 완료</span>
+            </div>
+            <p class="idea-desc">일본 호쿠리쿠 지역의 작은 항구 도시를 3박 4일 동안 돌며 아침 시장의 초밥집을 하나씩 찾아가는 여행 코스입니다. 도시마다 대표 생선과 가게 정보를 정리해 두었어요.</p>
+            <div class="tags"><span class="tag">여행</span><span class="tag">맛집</span><span class="tag">3박 4일</span></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 이병호</p>
+  </footer>
+
+  <script>
+    // 탭 전환: 클릭 또는 ←/→ 키
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    function selectTab(tab, focus = true) {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') selectTab(tabs[(i + 1) % tabs.length]);
+        if (e.key === 'ArrowLeft') selectTab(tabs[(i - 1 + tabs.length) % tabs.length]);
+      });
+    });
+
+    // 카테고리 필터
+    const chips = [...document.querySelectorAll('.chip')];
+    const ideas = [...document.querySelectorAll('.idea-card')];
+    function applyFilter(value) {
+      chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.filter === value));
+      ideas.forEach(card => {
+        card.hidden = value !== 'all' && card.dataset.category !== value;
+      });
+    }
+    chips.forEach(chip => chip.addEventListener('click', () => applyFilter(chip.dataset.filter)));
+
+    // 모아보기 타일 → 상세 노트 탭으로 이동 후 해당 카드 강조
+    document.querySelectorAll('.gallery-item').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        applyFilter('all');
+        selectTab(document.getElementById('tab-notes'), false);
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.remove('is-highlight');
+        void target.offsetWidth;
+        target.classList.add('is-highlight');
+      });
+    });
+  </script>
+</body>
+</html>

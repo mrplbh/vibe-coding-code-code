@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="프로그래머 이병호의 자기소개 페이지">
+  <title>이병호 | 자기소개</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- 좌측: 프로필 + 액션 -->
+    <aside class="sidebar">
+      <section class="card profile-card">
+        <div class="avatar">
+          <img src="images/profile.jpg" alt="이병호 프로필 사진"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'initial',textContent:'이'}))">
+        </div>
+        <span class="eyebrow">안녕하세요 👋</span>
+        <h1 class="profile-name">이병호입니다</h1>
+        <p class="profile-slogan">프로그래밍을 최대한 쉽고 재밌게 알려드립니다.</p>
+      </section>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#">연락하기</a>
+        <a class="btn btn-secondary" href="#">공유하기</a>
+      </div>
+    </aside>
+
+    <!-- 우측: 메인 컨텐츠 -->
+    <div class="content">
+      <div class="tabs" role="tablist" aria-label="페이지 메뉴">
+        <button class="tab" role="tab" id="tab-intro" aria-controls="panel-intro" aria-selected="true">👤 소개</button>
+        <button class="tab" role="tab" id="tab-hobby" aria-controls="panel-hobby" aria-selected="false" tabindex="-1">🥊 나의 취미</button>
+      </div>
+
+      <!-- 탭 1: 소개 -->
+      <div class="tab-panel" role="tabpanel" id="panel-intro" aria-labelledby="tab-intro">
+      <section class="card" aria-labelledby="about">
+        <h2 class="card-title" id="about">기본 정보</h2>
+        <dl class="info-list">
+          <div class="info-item">
+            <span class="icon">💻</span>
+            <div><dt>직업</dt><dd>프로그래머</dd></div>
+          </div>
+          <div class="info-item">
+            <span class="icon">🍣</span>
+            <div><dt>좋아하는 음식</dt><dd>초밥</dd></div>
+          </div>
+          <div class="info-item">
+            <span class="icon">🥊</span>
+            <div>
+              <dt>취미</dt>
+              <dd class="tags"><span class="tag">복싱</span><span class="tag">뮤지컬</span></dd>
+            </div>
+          </div>
+        </dl>
+      </section>
+
+      <section class="card" aria-labelledby="reading">
+        <h2 class="card-title" id="reading">최근 읽은 책</h2>
+        <article class="book">
+          <img class="book-cover" src="images/book-sagooeju.jpg" alt="『사고외주』 책 표지">
+          <div>
+            <p class="book-label">최근 읽은 책</p>
+            <p class="book-title">『사고외주』</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="card" aria-labelledby="notes">
+        <h2 class="card-title" id="notes">특이사항</h2>
+        <div class="gallery">
+          <figure class="gallery-item is-photo">
+            <img src="다운로드.jpg" alt="『사고외주』 책 표지">
+            <figcaption>요즘 읽는 『사고외주』</figcaption>
+          </figure>
+          <div class="gallery-item"><span class="emoji">🥊</span><p>복싱 체육관 출석 중</p></div>
+          <div class="gallery-item"><span class="emoji">🎭</span><p>뮤지컬 관람 매니아</p></div>
+          <div class="gallery-item"><span class="emoji">🍣</span><p>초밥 맛집 탐방</p></div>
+          <div class="gallery-item"><span class="emoji">👨‍🏫</span><p>쉽게 가르치는 개발자</p></div>
+        </div>
+      </section>
+      </div>
+
+      <!-- 탭 2: 나의 취미 -->
+      <div class="tab-panel" role="tabpanel" id="panel-hobby" aria-labelledby="tab-hobby" hidden>
+        <section class="card hobby-card" aria-labelledby="hobby-boxing">
+          <span class="hobby-icon">🥊</span>
+          <div>
+            <h2 class="card-title" id="hobby-boxing">복싱</h2>
+            <p class="hobby-desc">꾸준히 체육관에 출석하며 땀 흘리는 중입니다. 몸도 마음도 단단해지는 시간이에요.</p>
+            <div class="tags"><span class="tag">체육관 출석 중</span><span class="tag">운동</span></div>
+          </div>
+        </section>
+
+        <section class="card hobby-card" aria-labelledby="hobby-musical">
+          <span class="hobby-icon">🎭</span>
+          <div>
+            <h2 class="card-title" id="hobby-musical">뮤지컬</h2>
+            <p class="hobby-desc">무대 위 노래와 연기를 직접 보는 걸 좋아하는 뮤지컬 관람 매니아입니다.</p>
+            <div class="tags"><span class="tag">관람 매니아</span><span class="tag">공연</span></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 이병호</p>
+  </footer>
+
+  <script>
+    // 탭 전환: 클릭 또는 ←/→ 키
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    function selectTab(tab) {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      tab.focus();
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') selectTab(tabs[(i + 1) % tabs.length]);
+        if (e.key === 'ArrowLeft') selectTab(tabs[(i - 1 + tabs.length) % tabs.length]);
+      });
+    });
+  </script>
+</body>
+</html>
